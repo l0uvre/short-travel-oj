@@ -1,68 +1,34 @@
 /***
 Description:
-Before attack Huang Bo again, the army master created a special group. The combat value of soldiers in the special group list are random. The army master has four basic instructions in the special group: 1) Insert (x, y), 2) Delete(x), 3) Update(x,y), and 4) Reverse. The means of these instructions are:
+The army master found that Huang Bo seem know all his strategies before the wars.  The army master suspects there is a spy in the special group. Who is spy? He asked ItakEjgo.
 
-Insert(x,y): insert soldier with combat value y at position x.
+ItakEjgo told him “Counting-out game” can help him find the spy, the descprition of “counting-out gram” is:
 
-Delete(x): remove soldier at position x
+The soldiers in special group are standing in a circle waiting to be executed. The soldiers are numbered from 0. At first, the soldier numbered 0 is the leader. For each round of the game, counting begins at the next solider after the leader in the circle and proceeds around the circle in clock-wise direction. After k-1 soldiers are counted, the next person is removed from that circle. And the next person after the removed soldier becomes the new leader. The procedure is repeated with the remaining soldiers, starting with the next leader, until only one soldier remains. The remained soldier is spy.
 
-Update(x,y): set combat value of soldier at position x as y.
-
-Reverse: reverse the soldiers’ combat value in the special group list.
-
-For example, suppose we have special group list {1,3,2,4}, position is starting from 0.
-
-Insert (0,5) will change the special group list to {5,1,3,2,4}
-
-Delete(3) will change the special group list to {5,1,3,4}
-
-Update(1,7) will change the special group list to {5,7,3,4}
-
-Reverse will change the special group list to {4,3,7,5}
-
-Given a special group list, and a set of instructions, could you print the special group list to ItakEjgo after each instruction? For simplicity, Insert is 1, Delete is 2, Update is 3 and Reverse is 4 in the input.
+The army master asks you for help. Please, if and only if the army master find out the spy, ItakEjgo can defeat the evil Huang Bo!
 
 
 Input:
-First line will be a positive integer T (T<=50), which is the number of messages.
+First line will be a positive integer T (T<=10), which is the number of messages.
 
-For each message, the first line will be an integer n, n is the number of soldiers at first. Then there will be n integers which are the combat value of soldiers.
+For each message, the line will be n and k, the number of soldiers and the counting number.
 
-Then an integer m, m is the number of operations. Then will be m lines, each is a command:
-
-1 x y : insert soldier with combat value y at position x.
-
-2 x: remove the soldiers at position x
-
-3 x y: set combat value of soldier at position x as y.
-
-4: reverse the army
-
-The input guarantee that the army will not be empty during the operation.
-
-(1 <= n, m <= 100, all labels will be in range [0, 1233])
-
-
+ (1 <= n <= 100, 1 <= k <= 100)
 
 
 Output:
-For each test case, output the special group after each instruction.
+For each message, print the number of the last soldier.
 
 Input Example:
-1
-4
-1 3 2 4
-4
-1 0 5
+2
 2 3
-3 1 7
-4
+2 56
+
 
 Output Example:
-5 1 3 2 4
-5 1 3 4
-5 7 3 4
-4 3 7 5
+0
+1
 
 
 
