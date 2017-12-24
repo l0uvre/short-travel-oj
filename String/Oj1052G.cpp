@@ -1,6 +1,50 @@
+/***
+Description:
+As we defined in problem E. A prefix of a string S is S0,i, similarly, a suffix of a string S is Si,|s|-1.
+
+If a substring of S is both a prefix and suffix, we defined the substring is a presuffix. Now give you a string S, please print all presuffix.
+
+Input:
+The first line will be an integer T, which is the number of test cases. (1 <= T <= 10)
+
+For each test case, there will be a line with an integer n, which is the length of the string.
+
+Then there is a line with a string S. |S| <= 100000.
+
+S will only contain lower case English letters.
+
+
+Output:
+Several lines for each test case. All presuffix of S. And each presuffix should in a single line.
+
+There is en empty line between each test case (Including the last test case).
+
+Print all presuffix by their length in ascending order.
+
+
+Input Example:
+2
+5
+abaab
+5
+aaaaa
+
+Output Example:
+ab
+abaab
+
+a
+aa
+aaa
+aaaa
+aaaaa
+
+***/
+
+
+
 #include<bits/stdc++.h>
 using namespace std;
-
 
 
 void computeNextArray(string pat, int nt[])
@@ -25,31 +69,22 @@ void computeNextArray(string pat, int nt[])
 
 }
 
-// Driver program to test above function
 int main()
 {
     int t_times;
-    //int strLen;
     int ptnLen;
-    //string str;
+
     string pattern;
-    //std::vector<int> v = {};
-    //std::ios_base::sync_with_stdio(false);
-  std::cin.tie(0);
+    std::cin.tie(0);
 
     std::cin >> t_times;
     for (int i = 0; i < t_times; i++)
     {
       std::vector<int> v = {};
-      //std::cin >> strLen;
-      //std::cin >> str;
       std::cin >> ptnLen;
       std::cin >> pattern;
-
       pattern.push_back('A');
-
       int nt[ptnLen + 1];
-
       computeNextArray(pattern, nt);
 
       int j = nt[ptnLen];
@@ -60,13 +95,11 @@ int main()
 
       for (int k = v.size()-1; k >=0 ; k--)
       {
-        //std::cout << v[k] << '\n';
-          string result = pattern.substr(0, v[k]+1);
-          std::cout << result << '\n';
+        string result = pattern.substr(0, v[k]+1);
+        std::cout << result << '\n';
       }
       pattern.pop_back();
       std::cout<<pattern << '\n';
-
       std::cout << '\n';
 
     }

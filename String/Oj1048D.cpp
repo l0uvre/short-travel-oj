@@ -1,9 +1,42 @@
+/***
+Description:
+Do you believe in Magic? There is a magic abracadabra which can let you get AC to all problems in CS203 Lab5. But the abracadabra has some useless word. Give you the abracadabra S and a useless word T. Please print the abracadabra after delete all useless word. And pay attention to that you should remove the word from left to the right. That is, if we remove bab from babab , the result is ab.
+
+
+Input:
+The first line is the number of test cases T. (1 <= T <= 10)
+
+The second line is the length of abracadabra, n.
+
+Then there is a line with a string S, which is the abracadabra. |S| <= 1000000
+
+The third line will be an integer m, the length of the useless word.
+
+Then there is a line with a string T, which is the useless word T. |T| <= |S|
+
+S and T will only contain lower case English letters.
+
+
+Output:
+Print a string in a single line. The result problem required.
+
+
+Input Example:
+1
+29
+yourshahawehaatwillhanotlieha
+2
+ha
+
+
+Output Example:
+yoursweatwillnotlie
+
+***/
+
+
+
 #include<bits/stdc++.h>
-
-
-//C/cpp: never declare a local variable and return it, as it only stands for address.
-
-
 
 bool skip[1000010] = {false};
 int count = 0;
@@ -12,9 +45,6 @@ int KMPSearch(std::string pat, std::string txt, int nt[])
 {
     int M = pat.length();
     int N = txt.length();
-
-    //int count = 0;   Very Wrong way. Maybe in Java is okay.
-
     int i = 0; //pos for txt
     int j = 0; // pos for pattern
 
@@ -32,12 +62,9 @@ int KMPSearch(std::string pat, std::string txt, int nt[])
 
       if (j == M)
       {
-        //printf("Found pattern at index %d\n", i-j);
         count++;
         skip[i-j] = true;
-        //v.push_back(i-j);
         j = 0;
-        //i = 0;
       }
     }
 
@@ -76,46 +103,25 @@ int main() {
   int ptnLen;
   char str1[1000010];
   char pattern1[1000010];
-  //bool skip[1000010] = {false};
 
-  //string pattern;
-
-  //std::ios_base::sync_with_stdio(false);
   std::cin.tie(0);
-
   scanf("%d\n", &t_times);
-  //std::cin >> t_times;
-
   for (int i = 0; i < t_times; i++)
   {
     scanf("%d\n", &strLen);
-    //std::cin >> strLen;
     scanf("%s\n", str1);
-
-    //std::cin >> ptnLen;
-
     scanf("%d\n", &ptnLen);
-
     scanf("%s\n", pattern1);
-    //std::cin >> pattern;
 
     std::string str(str1), pattern(pattern1);
-
-    //std::cout << str << '\n';
-    //std::cout << pattern << '\n';
 
     int nt[ptnLen];
 
     computeNextArray(pattern, nt);
-
     int searched = KMPSearch(pattern, str, nt);
-
-    //std::cout << searched << '\n';
-
 
     while (searched != 0)
     {
-
       for (int k = strLen - 1; k >= 0; k--)
       {
         if (skip[k]) {
@@ -124,15 +130,9 @@ int main() {
           skip[k] = false;
         }
       }
-
       searched = KMPSearch(pattern, str, nt);
-
     }
-
-
-
     std::cout << str << '\n';
-
   }
   return 0;
 }
